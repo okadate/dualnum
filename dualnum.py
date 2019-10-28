@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 import numpy as np
@@ -46,14 +46,14 @@ class DualNumber(object):
         return self.__mul__(other)
     
     # self / other
-    def __truediv__(self,other):
+    def __div__(self,other):
         if isinstance(other,DualNumber):
             xsq = other.x*other.x
             return DualNumber( self.x / other.x, (self.x_d*other.x - self.x*other.x_d)/xsq)
         return DualNumber(self.x / other, self.x_d / other)
     
     # other / self
-    def __rtruediv__(self,other):
+    def __rdiv__(self,other):
         if isinstance(other,DualNumber):
              xsq = self.x*self.x
              return DualNumber( other.x / self.x, (other.x_d*self.x - other.x*self.x_d)/xsq)
